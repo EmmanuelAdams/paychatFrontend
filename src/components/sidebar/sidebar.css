@@ -80,3 +80,18 @@
   object-fit: cover;
   border-radius: 5px;
 }
+
+.sidebarFollowButton {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  border: none;
+  background-color: rgb(7, 7, 90);
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
