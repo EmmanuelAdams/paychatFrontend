@@ -6,10 +6,17 @@ import {
   RssFeedOutlined,
 } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
-
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 import './settingsPage.css';
 
 export default function SettingsPage() {
+  const { user } = useContext(AuthContext);
+
+  const paystackPage = () => {
+    window.open('https://paystack.com/pay/yb20z49ft0');
+  };
+
   const logOut = () => {
     window.localStorage.removeItem('user');
     window.location.reload();
@@ -19,7 +26,7 @@ export default function SettingsPage() {
     <div className="settings">
       <div className="settingsWrapper">
         <Link
-          to={'/profile/'}
+          to={`/profile/${user.username}`}
           style={{
             color: 'black',
             textDecoration: 'none',
@@ -66,12 +73,8 @@ export default function SettingsPage() {
             </span>
           </div>
         </Link>
-        <Link
-          to={'/payment'}
-          style={{
-            color: 'black',
-            textDecoration: 'none',
-          }}>
+
+        <div onClick={paystackPage}>
           <div className="iconWrapper">
             <AccountBalanceWalletOutlined
               fontSize="large"
@@ -81,7 +84,7 @@ export default function SettingsPage() {
               <p className="settingsText">Payment</p>
             </span>
           </div>
-        </Link>
+        </div>
       </div>
       <div onClick={logOut}>
         <button type="submit" className="logOut">

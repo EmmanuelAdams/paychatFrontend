@@ -1,5 +1,6 @@
 import {
   CommentOutlined,
+  Delete,
   MoreVert,
   Reply,
 } from '@mui/icons-material';
@@ -42,6 +43,17 @@ function Post({ post }) {
     setIsLiked(!isLiked);
   };
 
+  const deletePost = async () => {
+    try {
+      await axios.delete(`/posts/${post._id}`, {
+        data: { userId: currentUser._id },
+      });
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="post">
       <div className="postWrapper">
@@ -67,6 +79,7 @@ function Post({ post }) {
             </span>
           </div>
           <div className="postTopRight">
+            <Delete onClick={deletePost} />
             <MoreVert />
           </div>
         </div>
