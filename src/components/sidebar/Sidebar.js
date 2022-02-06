@@ -107,10 +107,14 @@ function Sidebar({ user }) {
         </div>
         <h4 className="sidebarTitle">User friends</h4>
         <div className="sidebarFollowings">
-          {friends.map((friend) => (
+          {friends.map((friend, keyId) => (
             <Link
+              key={keyId}
               to={'/profile/' + friend.username}
-              style={{ textDecoration: 'none' }}>
+              style={{
+                textDecoration: 'none',
+                color: 'black',
+              }}>
               <div className="sidebarFollowing">
                 <img
                   src={
